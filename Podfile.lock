@@ -1,0 +1,20 @@
+PODS:
+  - PureLayout (3.1.8)
+  - ReachabilitySwift (5.0.0)
+
+DEPENDENCIES:
+  - PureLayout
+  - ReachabilitySwift
+
+SPEC REPOS:
+  trunk:
+    - PureLayout
+    - ReachabilitySwift
+
+SPEC CHECKSUMS:
+  PureLayout: a4afb3d79dd958564ce33d22c89f407280d8e6a8
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+
+PODFILE CHECKSUM: 45f31071c39d38d24b3efd3d78ab2f9914d4cfb5
+
+COCOAPODS: 1.8.4
