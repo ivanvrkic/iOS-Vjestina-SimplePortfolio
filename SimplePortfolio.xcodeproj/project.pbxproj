@@ -14,6 +14,8 @@
 		567B842126669229002A73C7 /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567B842026669229002A73C7 /* ThemeProtocol.swift */; };
 		567B842426669251002A73C7 /* ThemeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567B842326669251002A73C7 /* ThemeKey.swift */; };
 		567B84272666925C002A73C7 /* LightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567B84262666925C002A73C7 /* LightTheme.swift */; };
+		56AEDB61266BC5FD0087898A /* Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AEDB60266BC5FD0087898A /* Transactions.swift */; };
+		56AEDB64266BC6060087898A /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AEDB63266BC6060087898A /* Status.swift */; };
 		56E12E4926652D7500898D7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E12E4826652D7500898D7A /* AppDelegate.swift */; };
 		56E12E4B26652D7500898D7A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E12E4A26652D7500898D7A /* SceneDelegate.swift */; };
 		56E12E4D26652D7500898D7A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E12E4C26652D7500898D7A /* ContentView.swift */; };
@@ -41,6 +43,8 @@
 		567B842026669229002A73C7 /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
 		567B842326669251002A73C7 /* ThemeKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeKey.swift; sourceTree = "<group>"; };
 		567B84262666925C002A73C7 /* LightTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightTheme.swift; sourceTree = "<group>"; };
+		56AEDB60266BC5FD0087898A /* Transactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transactions.swift; sourceTree = "<group>"; };
+		56AEDB63266BC6060087898A /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		56E12E4526652D7500898D7A /* SimplePortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplePortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56E12E4826652D7500898D7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56E12E4A26652D7500898D7A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +100,25 @@
 			path = Theme;
 			sourceTree = "<group>";
 		};
+		56AEDB66266BC60B0087898A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				56AEDB63266BC6060087898A /* Status.swift */,
+				56AEDB60266BC5FD0087898A /* Transactions.swift */,
+				56E4C54A2667C19E007721C0 /* Instrument.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		56AEDB67266BC61F0087898A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				56E4C5502667CB5D007721C0 /* DiscoverCellView.swift */,
+				56E4C54D2667CB50007721C0 /* PortolioCellView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		56E12E3C26652D7500898D7A = {
 			isa = PBXGroup;
 			children = (
@@ -121,12 +144,11 @@
 				56E12E4A26652D7500898D7A /* SceneDelegate.swift */,
 				56E12E6026652E0800898D7A /* AppRouter.swift */,
 				56E12E692665341800898D7A /* ViewControllers */,
-				56E4C54D2667CB50007721C0 /* PortolioCellView.swift */,
-				56E4C5502667CB5D007721C0 /* DiscoverCellView.swift */,
+				56AEDB67266BC61F0087898A /* Views */,
 				56E4C5582667D1EA007721C0 /* Presenter.swift */,
 				567B841F26669211002A73C7 /* Theme */,
 				56E12E5126652D7800898D7A /* Assets.xcassets */,
-				56E4C54A2667C19E007721C0 /* Instrument.swift */,
+				56AEDB66266BC60B0087898A /* Model */,
 				56E12E4C26652D7500898D7A /* ContentView.swift */,
 				56E12E5626652D7800898D7A /* LaunchScreen.storyboard */,
 				56E12E5926652D7800898D7A /* Info.plist */,
@@ -289,11 +311,13 @@
 				567B84272666925C002A73C7 /* LightTheme.swift in Sources */,
 				56E4C54B2667C19E007721C0 /* Instrument.swift in Sources */,
 				567B842426669251002A73C7 /* ThemeKey.swift in Sources */,
+				56AEDB61266BC5FD0087898A /* Transactions.swift in Sources */,
 				56E12E4B26652D7500898D7A /* SceneDelegate.swift in Sources */,
 				56E4C54E2667CB50007721C0 /* PortolioCellView.swift in Sources */,
 				56E12E78266534FB00898D7A /* TransactionViewController.swift in Sources */,
 				567B8414266683B9002A73C7 /* InstrumentViewController.swift in Sources */,
 				56E12E6126652E0800898D7A /* AppRouter.swift in Sources */,
+				56AEDB64266BC6060087898A /* Status.swift in Sources */,
 				56E4C5592667D1EA007721C0 /* Presenter.swift in Sources */,
 				56E12E4D26652D7500898D7A /* ContentView.swift in Sources */,
 				567B841C266690ED002A73C7 /* UIViewController+ThemeManager.swift in Sources */,

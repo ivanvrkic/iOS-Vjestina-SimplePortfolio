@@ -16,4 +16,5 @@ protocol ThemeProtocol{
     var placeholderColor:UIColor { get }
     var textFieldColor:UIColor { get }
     var cellColor:UIColor { get }
+    var backgroundColorSecond:UIColor { get }
 }

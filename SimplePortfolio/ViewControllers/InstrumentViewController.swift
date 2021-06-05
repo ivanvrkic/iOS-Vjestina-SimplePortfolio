@@ -134,7 +134,7 @@ class InstrumentViewController: UIViewController{
         view.backgroundColor = theme.backgroundColor
         labelPrice.textColor = theme.fontColor
         labelPrice.text = String(instrument.price)+"$"
-        labelChange.text = String(instrument.price)+"%"
+        labelChange.text = String(instrument.change)+"%"
         labelName.textColor = theme.fontColor
         labelName.text = instrument.name
         if (instrument.change < 0){

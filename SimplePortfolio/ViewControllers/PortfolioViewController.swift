@@ -5,9 +5,10 @@
 //  Created by Lovre on 31/05/2021.
 //
 
+
 import Foundation
 import UIKit
-class PortfolioViewController: UIViewController{
+class PortfolioViewController: UIViewController,UITableViewDelegate{
     
     private var router:AppRouter!
     private var theme:ThemeProtocol!
@@ -68,7 +69,16 @@ class PortfolioViewController: UIViewController{
         return view
     }()
     
-    private var tableView: UITableView!
+    private var tableView: UITableView = {
+        let view = UITableView()
+        view.register(DiscoverCellView.self, forCellReuseIdentifier: "PortfolioCell")
+        view.rowHeight = 70
+        return view
+    }()
+    
+    private var presenter:Presenter!
+    private var instruments:[Instrument]!
+    private var status:Status!
     
     init(router: AppRouter){
         super.init(nibName: nil, bundle: nil)
@@ -80,12 +90,16 @@ class PortfolioViewController: UIViewController{
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        presenter = Presenter()
+        instruments = presenter.fetchForPortfolio()
         theme = getCurrentTheme()
         styleViews()
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewDidLoad() {
+        tableView.delegate = self
+        tableView.dataSource = self
         topView.addArrangedSubview(labelTitle)
         topView.addArrangedSubview(labelAmount)
         changeView.addArrangedSubview(labelChangeAmount)
@@ -100,6 +114,17 @@ class PortfolioViewController: UIViewController{
         topView.autoPinEdge(toSuperviewEdge: .trailing, withInset: leadingMargin)
         topView.autoPinEdge(toSuperviewEdge: .top, withInset: titleMargin)
         
+        view.addSubview(tableView)
+        tableView.autoPinEdge(toSuperviewEdge: .leading, withInset: leadingMargin)
+        tableView.autoPinEdge(toSuperviewEdge: .trailing, withInset: leadingMargin)
+        tableView.autoPinEdge(.top, to: .bottom, of: topView,withOffset: 10)
+        tableView.autoPinEdge(toSuperviewEdge: .bottom)
+        
+        presenter = Presenter()
+        status = presenter.fetchStatus()
+        labelAmount.text = String(status.valueOfPortfolio)+"$"
+        labelChangeAmount.text = String(status.changeInCurrency)+"$"
+        labelChangePercent.text = String(status.changeInPercentage)+"%"
     }
     
     private func styleViews(){
@@ -107,13 +132,21 @@ class PortfolioViewController: UIViewController{
         let gradient = CAGradientLayer()
 
         gradient.frame = view.bounds
-        gradient.colors = [theme.greenColor.cgColor, theme.backgroundColor.cgColor]
+        if(status.changeInPercentage > 0){
+            gradient.colors = [theme.greenColor.cgColor, theme.backgroundColor.cgColor]
+        } else {
+            gradient.colors = [theme.redColor.cgColor, theme.backgroundColor.cgColor]
+        }
+        
         view.layer.insertSublayer(gradient, below: topView.layer)
         
         labelTitle.textColor = theme.fontColor
         labelAmount.textColor = theme.fontColor
         labelChangeAmount.textColor = theme.fontColor
         labelChangePercent.textColor = theme.fontColor
+        
+        tableView.backgroundColor = theme.backgroundColorSecond
+        tableView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -121,6 +154,54 @@ class PortfolioViewController: UIViewController{
         widthOfComponents = self.view.frame.size.width * 0.8
         leadingMargin = self.view.frame.size.width * 0.1
     }
+    
+    
+}
+
+extension PortfolioViewController:UITableViewDataSource{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return instruments.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell:DiscoverCellView!
+        cell = tableView.dequeueReusableCell(withIdentifier: "PortfolioCell", for: indexPath as IndexPath) as! DiscoverCellView
+        
+        cell.labelName.text = instruments[indexPath.row].name
+        cell.labelPrice.text = String(instruments[indexPath.row].price)+"$"
+        cell.labelChange.text = String(instruments[indexPath.row].change)+"%"
+        
+        cell.labelName.textColor = theme.fontColor
+        cell.labelPrice.textColor = theme.fontColor
+        if (instruments[indexPath.row].change < 0){
+            cell.labelChange.textColor = theme.redColor
+        } else {
+            cell.labelChange.textColor = theme.greenColor
+        }
+        
+        cell.backgroundColor = theme.cellColor
+        
+        cell.layer.cornerRadius = 8
+        cell.layer.masksToBounds = true
+        
+        let url = NSURL(string: instruments[indexPath.row].imageurl)! as URL
+        if let imageData: NSData = NSData(contentsOf: url) {
+            cell.imageIcon.image = UIImage(data: imageData as Data)
+        }
+        
+        return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        router.showInstrument(instrument: instruments[indexPath[1]])
+    }
+    
     
     
 }

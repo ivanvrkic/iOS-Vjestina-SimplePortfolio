@@ -17,5 +17,5 @@ struct LightTheme:ThemeProtocol{
     let placeholderColor:UIColor = .black
     let textFieldColor:UIColor = .lightGray
     let cellColor: UIColor = .white
-    
+    let backgroundColorSecond: UIColor = .clear
 }
