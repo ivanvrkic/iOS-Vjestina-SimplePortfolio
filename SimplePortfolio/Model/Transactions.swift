@@ -9,4 +9,6 @@ import Foundation
 struct Transaction{
     let quantity: Float
     let instrument: Instrument
+    let priceAtMoment: Float
+    let type: TransactionType
 }

@@ -15,5 +15,6 @@ struct Instrument{
     var volume:Float
     var description:String
     var imageurl:String
+    var value:Float //quantity*price
 }
 

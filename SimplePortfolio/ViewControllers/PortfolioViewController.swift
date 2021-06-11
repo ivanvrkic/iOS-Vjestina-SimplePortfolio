@@ -71,8 +71,8 @@ class PortfolioViewController: UIViewController,UITableViewDelegate{
     
     private var tableView: UITableView = {
         let view = UITableView()
-        view.register(DiscoverCellView.self, forCellReuseIdentifier: "PortfolioCell")
-        view.rowHeight = 70
+        view.register(PortfolioCellView.self, forCellReuseIdentifier: "PortfolioCell")
+        view.rowHeight = 90
         return view
     }()
     
@@ -169,8 +169,8 @@ extension PortfolioViewController:UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell:DiscoverCellView!
-        cell = tableView.dequeueReusableCell(withIdentifier: "PortfolioCell", for: indexPath as IndexPath) as! DiscoverCellView
+        let cell:PortfolioCellView!
+        cell = tableView.dequeueReusableCell(withIdentifier: "PortfolioCell", for: indexPath as IndexPath) as? PortfolioCellView
         
         cell.labelName.text = instruments[indexPath.row].name
         cell.labelPrice.text = String(instruments[indexPath.row].price)+"$"
@@ -183,6 +183,10 @@ extension PortfolioViewController:UITableViewDataSource{
         } else {
             cell.labelChange.textColor = theme.greenColor
         }
+        cell.labelQuantity.text = String(instruments[indexPath.row].quantity)
+        cell.labelQuantity.textColor = theme.valuesColor
+        cell.labelValue.text = String(instruments[indexPath.row].value)+"$"
+        cell.labelValue.textColor = theme.valuesColor
         
         cell.backgroundColor = theme.cellColor
         
@@ -199,7 +203,7 @@ extension PortfolioViewController:UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        router.showInstrument(instrument: instruments[indexPath[1]])
+        router.showPortfolioInstrument(instrument: instruments[indexPath[1]])
     }
     
     

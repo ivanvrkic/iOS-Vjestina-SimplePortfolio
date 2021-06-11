@@ -33,6 +33,8 @@
 		56E4C54E2667CB50007721C0 /* PortolioCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E4C54D2667CB50007721C0 /* PortolioCellView.swift */; };
 		56E4C5512667CB5D007721C0 /* DiscoverCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E4C5502667CB5D007721C0 /* DiscoverCellView.swift */; };
 		56E4C5592667D1EA007721C0 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E4C5582667D1EA007721C0 /* Presenter.swift */; };
+		56E5D20C2672E086004A9A83 /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E5D20B2672E086004A9A83 /* TransactionType.swift */; };
+		56E5D20F2672E13D004A9A83 /* TransactionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E5D20E2672E13D004A9A83 /* TransactionCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +66,8 @@
 		56E4C54D2667CB50007721C0 /* PortolioCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortolioCellView.swift; sourceTree = "<group>"; };
 		56E4C5502667CB5D007721C0 /* DiscoverCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCellView.swift; sourceTree = "<group>"; };
 		56E4C5582667D1EA007721C0 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		56E5D20B2672E086004A9A83 /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
+		56E5D20E2672E13D004A9A83 /* TransactionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCellView.swift; sourceTree = "<group>"; };
 		E9DF102B3D6EE864C53C4BE2 /* Pods-SimplePortfolio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimplePortfolio.release.xcconfig"; path = "Target Support Files/Pods-SimplePortfolio/Pods-SimplePortfolio.release.xcconfig"; sourceTree = "<group>"; };
 		ECAAFC83DAD63BF4ABFD592F /* Pods-SimplePortfolio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimplePortfolio.debug.xcconfig"; path = "Target Support Files/Pods-SimplePortfolio/Pods-SimplePortfolio.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				56AEDB63266BC6060087898A /* Status.swift */,
+				56E5D20B2672E086004A9A83 /* TransactionType.swift */,
 				56AEDB60266BC5FD0087898A /* Transactions.swift */,
 				56E4C54A2667C19E007721C0 /* Instrument.swift */,
 			);
@@ -115,6 +120,7 @@
 			children = (
 				56E4C5502667CB5D007721C0 /* DiscoverCellView.swift */,
 				56E4C54D2667CB50007721C0 /* PortolioCellView.swift */,
+				56E5D20E2672E13D004A9A83 /* TransactionCellView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -306,6 +312,7 @@
 				56E12E6B2665342F00898D7A /* PortfolioViewController.swift in Sources */,
 				56E12E6F266534A900898D7A /* DiscoverViewController.swift in Sources */,
 				567B842126669229002A73C7 /* ThemeProtocol.swift in Sources */,
+				56E5D20C2672E086004A9A83 /* TransactionType.swift in Sources */,
 				56E12E4926652D7500898D7A /* AppDelegate.swift in Sources */,
 				567B8411266683A7002A73C7 /* PortfolioInstrumentViewController.swift in Sources */,
 				567B84272666925C002A73C7 /* LightTheme.swift in Sources */,
@@ -322,6 +329,7 @@
 				56E12E4D26652D7500898D7A /* ContentView.swift in Sources */,
 				567B841C266690ED002A73C7 /* UIViewController+ThemeManager.swift in Sources */,
 				56E12E72266534C100898D7A /* SettingsViewController.swift in Sources */,
+				56E5D20F2672E13D004A9A83 /* TransactionCellView.swift in Sources */,
 				56E4C5482667BD02007721C0 /* DarkTheme.swift in Sources */,
 				56E4C5512667CB5D007721C0 /* DiscoverCellView.swift in Sources */,
 			);

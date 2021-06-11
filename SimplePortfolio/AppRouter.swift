@@ -44,4 +44,18 @@ class AppRouter: AppRouterProtocol{
         navigationController.popToRootViewController(animated: false)
     }
     
+    func showPortfolioInstrument(instrument:Instrument){
+        let instrumentVc = PortfolioInstrumentViewController(router: self, instrument: instrument)
+        navigationController.pushViewController(instrumentVc, animated: false)
+    }
+    
+    func presentTransaction(instrument:Instrument,transactionType:TransactionType){
+        let transactionVc = TransactionViewController(router: self, instrument: instrument, transactionType: transactionType)
+        navigationController.present(transactionVc, animated: true, completion: nil)
+    }
+    
+    func dismiss(){
+        navigationController.dismiss(animated: true, completion: nil)
+    }
+    
 }

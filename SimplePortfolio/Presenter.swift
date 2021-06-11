@@ -26,6 +26,7 @@ class Presenter:DiscoveryPresenter,PortfolioPresenter{
     }
     
     func fetchTransactions(instrument: Instrument) -> [Transaction] {
+        transactions = DataService().fetchTransactions()
         return transactions
     }
     
@@ -59,8 +60,15 @@ class Presenter:DiscoveryPresenter,PortfolioPresenter{
 
 class DataService{
     func fetchForDiscovery() -> [Instrument]{
-        let i1 = Instrument(name: "apple", quantity: 5, price: 300, change: 2.50, marketCap: 1000, volume: 1000, description: "des", imageurl: "")
-        let i2 = Instrument(name: "oil", quantity: 2, price: 200, change: -0.5, marketCap: 1000, volume: 1000, description: "des", imageurl: "")
+        let i1 = Instrument(name: "apple", quantity: 5, price: 300, change: 2.50, marketCap: 1000, volume: 1000, description: "des", imageurl: "http://logok.org/wp-content/uploads/2014/04/Apple-Logo-black.png",value: 1500)
+        let i2 = Instrument(name: "oil", quantity: 3, price: 200, change: -0.5, marketCap: 1000, volume: 1000, description: "des", imageurl: "http://logok.org/wp-content/uploads/2014/04/Apple-Logo-black.png",value: 600)
         return [i1,i2]
+    }
+    
+    func fetchTransactions() -> [Transaction]{
+        let i1 = Instrument(name: "apple", quantity: 5, price: 300, change: 2.50, marketCap: 1000, volume: 1000, description: "des", imageurl: "http://logok.org/wp-content/uploads/2014/04/Apple-Logo-black.png",value: 1500)
+        let c1 = Transaction(quantity: 3, instrument: i1, priceAtMoment: 200, type: .buy)
+        let c2 = Transaction(quantity: 2, instrument: i1, priceAtMoment: 300, type: .sell)
+        return [c1,c2]
     }
 }

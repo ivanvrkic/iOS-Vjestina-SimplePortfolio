@@ -18,4 +18,5 @@ struct LightTheme:ThemeProtocol{
     let textFieldColor:UIColor = .lightGray
     let cellColor: UIColor = .white
     let backgroundColorSecond: UIColor = .clear
+    let valuesColor: UIColor = .darkGray
 }

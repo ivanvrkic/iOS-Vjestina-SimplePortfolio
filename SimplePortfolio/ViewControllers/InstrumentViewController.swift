@@ -9,18 +9,18 @@ import Foundation
 import UIKit
 class InstrumentViewController: UIViewController{
     
-    private var router:AppRouter!
-    private var theme:ThemeProtocol!
-    private var instrument:Instrument
+    internal var router:AppRouter!
+    internal var theme:ThemeProtocol!
+    internal var instrument:Instrument
     
-    private var leadingMargin:CGFloat!
-    private var titleMargin:CGFloat = 80
-    private var smallMargin:CGFloat = 20
+    internal var leadingMargin:CGFloat!
+    internal var titleMargin:CGFloat = 80
+    internal var smallMargin:CGFloat = 20
     
     //DIMENZIJE
-    private var widthOfComponents:CGFloat!
-    private var heightSmall:CGFloat = 30
-    private var heightBig:CGFloat = 50
+    internal var widthOfComponents:CGFloat!
+    internal var heightSmall:CGFloat = 30
+    internal var heightBig:CGFloat = 50
     
     var labelName:UILabel = {
         let label = UILabel()
@@ -67,7 +67,7 @@ class InstrumentViewController: UIViewController{
         return image
     }()
     
-    private var stackVertical: UIStackView = {
+    internal var stackVertical: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
         view.distribution = .fill
@@ -75,7 +75,7 @@ class InstrumentViewController: UIViewController{
         return view
     }()
     
-    private var stackHorizontal: UIStackView = {
+    internal var stackHorizontal: UIStackView = {
         let view = UIStackView()
         view.axis = .horizontal
         view.distribution = .fill
@@ -83,7 +83,7 @@ class InstrumentViewController: UIViewController{
         return view
     }()
     
-    private var stack: UIStackView = {
+    internal var stack: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
         view.distribution = .fill
@@ -130,7 +130,7 @@ class InstrumentViewController: UIViewController{
         imageIcon.autoSetDimensions(to: CGSize(width: 80, height: 80))
     }
     
-    private func styleViews(){
+    internal func styleViews(){
         view.backgroundColor = theme.backgroundColor
         labelPrice.textColor = theme.fontColor
         labelPrice.text = String(instrument.price)+"$"

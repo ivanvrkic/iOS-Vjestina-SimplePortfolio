@@ -9,19 +9,7 @@ import Foundation
 
 import UIKit
 
-class PortfolioCellView: UITableViewCell{
-    
-    var labelName:UILabel = {
-        let label = UILabel()
-        label.text = "name"
-        return label
-    }()
-    
-    var labelPrice:UILabel = {
-        let label = UILabel()
-        label.text = "price"
-        return label
-    }()
+class PortfolioCellView: DiscoverCellView{
     
     var labelQuantity:UILabel = {
         let label = UILabel()
@@ -35,44 +23,7 @@ class PortfolioCellView: UITableViewCell{
         return label
     }()
     
-    var labelChange:UILabel = {
-        let label = UILabel()
-        label.text = "change"
-        return label
-    }()
-    
-    var imageIcon:UIImageView = {
-        let image = UIImageView()
-        image.contentMode = .scaleToFill
-        image.clipsToBounds = true
-        return image
-    }()
-    
-    private var stackHorizontal: UIStackView = {
-        let view = UIStackView()
-        view.axis = .horizontal
-        view.distribution = .fill
-        view.spacing = 10
-        return view
-    }()
-    
-    private var stackVertical: UIStackView = {
-        let view = UIStackView()
-        view.axis = .vertical
-        view.distribution = .fill
-        view.spacing = 10
-        return view
-    }()
-    
-    private var substackTop: UIStackView = {
-        let view = UIStackView()
-        view.axis = .horizontal
-        view.distribution = .fill
-        view.spacing = 10
-        return view
-    }()
-    
-    private var substackBottom: UIStackView = {
+    internal var substackBottom: UIStackView = {
         let view = UIStackView()
         view.axis = .horizontal
         view.distribution = .fill
@@ -82,19 +33,12 @@ class PortfolioCellView: UITableViewCell{
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?)  {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        stackHorizontal.addArrangedSubview(imageIcon)
-        stackHorizontal.addArrangedSubview(stackVertical)
-        stackVertical.addArrangedSubview(labelName)
-        stackVertical.addArrangedSubview(substackTop)
-        stackVertical.addArrangedSubview(substackBottom)
-        substackTop.addArrangedSubview(labelPrice)
-        substackTop.addArrangedSubview(labelChange)
+        stackVertical.spacing = 5
+        stackVertical.distribution = .fillEqually
         substackBottom.addArrangedSubview(labelQuantity)
         substackBottom.addArrangedSubview(labelValue)
-        addSubview(stackHorizontal)
-        
-        stackHorizontal.autoPinEdge(toSuperviewEdge: .leading)
-        stackHorizontal.autoPinEdge(toSuperviewEdge: .top)
+        stackVertical.addArrangedSubview(substackBottom)
+        imageIcon.autoSetDimensions(to: CGSize(width: 90, height: 90))
         
     }
     
@@ -106,7 +50,6 @@ class PortfolioCellView: UITableViewCell{
         super.prepareForReuse()
 
     }
-    
     
 }
 

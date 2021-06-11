@@ -35,7 +35,7 @@ class DiscoverCellView: UITableViewCell{
         return image
     }()
     
-    private var stackHorizontal: UIStackView = {
+    internal var stackHorizontal: UIStackView = {
         let view = UIStackView()
         view.axis = .horizontal
         view.distribution = .fill
@@ -43,15 +43,15 @@ class DiscoverCellView: UITableViewCell{
         return view
     }()
     
-    private var stackVertical: UIStackView = {
+    internal var stackVertical: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
         view.distribution = .fill
-        view.spacing = 10
+        view.spacing = 15
         return view
     }()
     
-    private var substackTop: UIStackView = {
+    internal var substackTop: UIStackView = {
         let view = UIStackView()
         view.axis = .horizontal
         view.distribution = .fill
@@ -69,7 +69,7 @@ class DiscoverCellView: UITableViewCell{
         substackTop.addArrangedSubview(labelChange)
         addSubview(stackHorizontal)
         
-        stackHorizontal.autoPinEdge(toSuperviewEdge: .leading)
+        stackHorizontal.autoPinEdge(toSuperviewEdge: .leading,withInset: 15)
         //stackHorizontal.autoPinEdge(toSuperviewEdge: .top)
         stackHorizontal.autoAlignAxis(toSuperviewAxis: .horizontal)
         //stackHorizontal.autoAlignAxis(toSuperviewAxis: .vertical)
