@@ -22,7 +22,7 @@ class DiscoverViewController: UIViewController{
     private var heightSmall:CGFloat = 30
     private var heightBig:CGFloat = 50
     
-    private var instruments:[Instrument]!
+    private var instruments:[Stock]!
     private var presenter:Presenter!
     
     private var labelTitle: UILabel = {
@@ -52,6 +52,7 @@ class DiscoverViewController: UIViewController{
         view.spacing = 10
         return view
     }()
+    
     
     private var tableView: UITableView = {
         let view = UITableView()
@@ -85,7 +86,7 @@ class DiscoverViewController: UIViewController{
         textSearch.addSubview(buttonSearch)
         view.addSubview(stack)
         
-        widthOfComponents = self.view.frame.size.width * 0.8
+        widthOfComponents = self.view.frame.size.width * 0.97
         leadingMargin = self.view.frame.size.width * 0.1
         
         stack.autoPinEdge(toSuperviewEdge: .leading, withInset: leadingMargin)
@@ -108,7 +109,7 @@ class DiscoverViewController: UIViewController{
     private func styleViews(){
         view.backgroundColor = theme.backgroundColor
         
-        labelTitle.textColor = theme.fontColor
+//        labelTitle.textColor = theme.fontColor
         textSearch.attributedPlaceholder = NSAttributedString(string: "Search", attributes: [NSAttributedString.Key.foregroundColor: theme.fontColor])
         textSearch.textColor = theme.placeholderColor
         textSearch.backgroundColor = theme.textFieldColor
@@ -122,18 +123,24 @@ class DiscoverViewController: UIViewController{
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        widthOfComponents = self.view.frame.size.width * 0.8
+        widthOfComponents = self.view.frame.size.width * 0.97
         leadingMargin = self.view.frame.size.width * 0.1
     }
     
     @objc private func btnSearch(){
         let filter = textSearch.text
         if(filter == nil){
+            
             instruments = presenter.fetchForDiscovery()
             tableView.reloadData()
         } else {
-            instruments = presenter.fetchFiltered(filter: filter!)
-            tableView.reloadData()
+            presenter.fetchStocks(keyword: filter!, completionHandler: { stocks in
+                DispatchQueue.main.async {
+                self.instruments = stocks
+                self.tableView.reloadData()
+                }
+            })
+            
         }
     }
     
@@ -154,26 +161,29 @@ extension DiscoverViewController:UITableViewDataSource{
         cell = tableView.dequeueReusableCell(withIdentifier: "DiscoverCell", for: indexPath as IndexPath) as! DiscoverCellView
         
         cell.labelName.text = instruments[indexPath.row].name
-        cell.labelPrice.text = String(instruments[indexPath.row].price)+"$"
-        cell.labelChange.text = String(instruments[indexPath.row].change)+"%"
-        
+        cell.labelSymbol.text = instruments[indexPath.row].symbol
+
+//        cell.labelPrice.text = String(instruments[indexPath.row].price)+"$"
+//        cell.labelChange.text = String(instruments[indexPath.row].change)+"%"
+//
         cell.labelName.textColor = theme.fontColor
-        cell.labelPrice.textColor = theme.fontColor
-        if (instruments[indexPath.row].change < 0){
-            cell.labelChange.textColor = theme.redColor
-        } else {
-            cell.labelChange.textColor = theme.greenColor
-        }
+        cell.labelSymbol.textColor = theme.fontColor
+//        za search api call imamo samo stock symbol i name
+//        if (instruments[indexPath.row].change < 0){
+//            cell.labelChange.textColor = theme.redColor
+//        } else {
+//            cell.labelChange.textColor = theme.greenColor
+//        }
         
         cell.backgroundColor = theme.cellColor
         
         cell.layer.cornerRadius = 8
         cell.layer.masksToBounds = true
         
-        let url = NSURL(string: instruments[indexPath.row].imageurl)! as URL
-        if let imageData: NSData = NSData(contentsOf: url) {
-            cell.imageIcon.image = UIImage(data: imageData as Data)
-        }
+//        let url = NSURL(string: instruments[indexPath.row].imageurl)! as URL
+//        if let imageData: NSData = NSData(contentsOf: url) {
+//            cell.imageIcon.image = UIImage(data: imageData as Data)
+//        }
         
         return cell
         

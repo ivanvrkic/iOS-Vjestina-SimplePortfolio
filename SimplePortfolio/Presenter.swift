@@ -7,25 +7,29 @@
 
 import Foundation
 protocol DiscoveryPresenter{
-    func fetchForDiscovery() -> [Instrument]
-    func fetchFiltered(filter:String) -> [Instrument]
+    func fetchForDiscovery() -> [Stock]
+//    func fetchFiltered(filter:String) -> [Instrument]
 }
 
 protocol PortfolioPresenter{
-    func fetchForPortfolio() -> [Instrument]
-    func fetchTransactions(instrument: Instrument) -> [Transaction]
+    func fetchForPortfolio() -> [Stock]
+    func fetchTransactions(instrument: Stock) -> [Transaction]
     func makeTransaction(transaction:Transaction) -> Void
     func fetchStatus() -> Status
 }
+
 class Presenter:DiscoveryPresenter,PortfolioPresenter{
-    func fetchForPortfolio() -> [Instrument] {
-        
-        
-        instruments = DataService().fetchForDiscovery()
-        return instruments
+    
+    var stocks:[Stock]!
+    var transactions:[Transaction]!
+    
+    
+    func fetchForPortfolio() -> [Stock] {
+        stocks = DataService().fetchForDiscovery()
+        return stocks
     }
     
-    func fetchTransactions(instrument: Instrument) -> [Transaction] {
+    func fetchTransactions(instrument: Stock) -> [Transaction] {
         transactions = DataService().fetchTransactions()
         return transactions
     }
@@ -39,36 +43,26 @@ class Presenter:DiscoveryPresenter,PortfolioPresenter{
         return status
     }
     
-    var instruments:[Instrument]!
-    var transactions:[Transaction]!
-    
-    func fetchForDiscovery() -> [Instrument]{
-        instruments = DataService().fetchForDiscovery()
-        return instruments
+    func fetchForDiscovery() -> [Stock]{
+        stocks = DataService().fetchForDiscovery()
+        return stocks
     }
-    func fetchFiltered(filter:String) -> [Instrument]{
-        var new:[Instrument]! = []
-        let data = DataService().fetchForDiscovery()
-        for ins in data{
-            if (ins.name.contains(filter)){
-                new.append(ins)
-            }
+//    func fetchFiltered(filter:String) -> [Instrument]{
+////        var new:[Instrument]! = []
+////        let data = DataService().fetchForDiscovery()
+////        for ins in data{
+////            if (ins.name.contains(filter)){
+////                new.append(ins)
+////            }
+////        }
+////        return new
+//    }
+    
+    func fetchStocks(keyword: String, completionHandler: @escaping ([Stock]) -> Void) {
+        DataService().fetchStocks(keyword: keyword){ stocks in
+            completionHandler(stocks)
         }
-        return new
     }
 }
 
-class DataService{
-    func fetchForDiscovery() -> [Instrument]{
-        let i1 = Instrument(name: "apple", quantity: 5, price: 300, change: 2.50, marketCap: 1000, volume: 1000, description: "des", imageurl: "http://logok.org/wp-content/uploads/2014/04/Apple-Logo-black.png",value: 1500)
-        let i2 = Instrument(name: "oil", quantity: 3, price: 200, change: -0.5, marketCap: 1000, volume: 1000, description: "des", imageurl: "http://logok.org/wp-content/uploads/2014/04/Apple-Logo-black.png",value: 600)
-        return [i1,i2]
-    }
-    
-    func fetchTransactions() -> [Transaction]{
-        let i1 = Instrument(name: "apple", quantity: 5, price: 300, change: 2.50, marketCap: 1000, volume: 1000, description: "des", imageurl: "http://logok.org/wp-content/uploads/2014/04/Apple-Logo-black.png",value: 1500)
-        let c1 = Transaction(quantity: 3, instrument: i1, priceAtMoment: 200, type: .buy)
-        let c2 = Transaction(quantity: 2, instrument: i1, priceAtMoment: 300, type: .sell)
-        return [c1,c2]
-    }
-}
+

@@ -54,7 +54,7 @@ class PortfolioInstrumentViewController: InstrumentViewController, UITableViewDe
         return view
     }()
     
-    override init(router: AppRouter,instrument:Instrument){
+    override init(router: AppRouter,instrument:Stock){
         super.init(router: router, instrument: instrument)
     }
     
@@ -66,10 +66,10 @@ class PortfolioInstrumentViewController: InstrumentViewController, UITableViewDe
     override func styleViews(){
         super.styleViews()
         labelValue.textColor = theme.fontColor
-        labelValue.text = String(instrument.value)+"$"
+//        labelValue.text = String(instrument.value)+"$"
         labelValue.font = UIFont.preferredFont(forTextStyle: .title2)
         
-        labelQuantity.text = String(instrument.quantity)
+//        labelQuantity.text = String(instrument.quantity)
         labelQuantity.textColor = theme.fontColor
         labelQuantity.font = UIFont.preferredFont(forTextStyle: .title2)
         

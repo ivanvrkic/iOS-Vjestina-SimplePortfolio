@@ -16,25 +16,31 @@ class DiscoverCellView: UITableViewCell{
         return label
     }()
     
-    var labelPrice:UILabel = {
+    var labelSymbol:UILabel = {
         let label = UILabel()
-        label.text = "price"
+        label.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
+        label.text = "symbol"
         return label
     }()
-    
-    var labelChange:UILabel = {
-        let label = UILabel()
-        label.text = "change"
-        return label
-    }()
-    
-    var imageIcon:UIImageView = {
-        let image = UIImageView()
-        image.contentMode = .scaleToFill
-        image.clipsToBounds = true
-        return image
-    }()
-    
+//    var labelPrice:UILabel = {
+//        let label = UILabel()
+//        label.text = "price"
+//        return label
+//    }()
+//
+//    var labelChange:UILabel = {
+//        let label = UILabel()
+//        label.text = "change"
+//        return label
+//    }()
+//
+//    var imageIcon:UIImageView = {
+//        let image = UIImageView()
+//        image.contentMode = .scaleToFill
+//        image.clipsToBounds = true
+//        return image
+//    }()
+//
     internal var stackHorizontal: UIStackView = {
         let view = UIStackView()
         view.axis = .horizontal
@@ -47,7 +53,7 @@ class DiscoverCellView: UITableViewCell{
         let view = UIStackView()
         view.axis = .vertical
         view.distribution = .fill
-        view.spacing = 15
+        view.spacing = 5
         return view
     }()
     
@@ -61,12 +67,13 @@ class DiscoverCellView: UITableViewCell{
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?)  {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        stackHorizontal.addArrangedSubview(imageIcon)
+//        stackHorizontal.addArrangedSubview(imageIcon)
         stackHorizontal.addArrangedSubview(stackVertical)
+        stackVertical.addArrangedSubview(labelSymbol)
         stackVertical.addArrangedSubview(labelName)
-        stackVertical.addArrangedSubview(substackTop)
-        substackTop.addArrangedSubview(labelPrice)
-        substackTop.addArrangedSubview(labelChange)
+//        stackVertical.addArrangedSubview(substackTop)
+//        substackTop.addArrangedSubview(labelPrice)
+//        substackTop.addArrangedSubview(labelChange)
         addSubview(stackHorizontal)
         
         stackHorizontal.autoPinEdge(toSuperviewEdge: .leading,withInset: 15)
@@ -74,7 +81,7 @@ class DiscoverCellView: UITableViewCell{
         stackHorizontal.autoAlignAxis(toSuperviewAxis: .horizontal)
         //stackHorizontal.autoAlignAxis(toSuperviewAxis: .vertical)
         
-        imageIcon.autoSetDimensions(to: CGSize(width: 60, height: 60))
+//        imageIcon.autoSetDimensions(to: CGSize(width: 60, height: 60))
         
     }
     

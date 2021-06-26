@@ -35,7 +35,7 @@ class AppRouter: AppRouterProtocol{
         window?.makeKeyAndVisible()
     }
     
-    func showInstrument(instrument:Instrument) {
+    func showInstrument(instrument:Stock) {
         let instrumentVc = InstrumentViewController(router: self, instrument: instrument)
         navigationController.pushViewController(instrumentVc, animated: false)
     }
@@ -44,12 +44,12 @@ class AppRouter: AppRouterProtocol{
         navigationController.popToRootViewController(animated: false)
     }
     
-    func showPortfolioInstrument(instrument:Instrument){
+    func showPortfolioInstrument(instrument:Stock){
         let instrumentVc = PortfolioInstrumentViewController(router: self, instrument: instrument)
         navigationController.pushViewController(instrumentVc, animated: false)
     }
     
-    func presentTransaction(instrument:Instrument,transactionType:TransactionType){
+    func presentTransaction(instrument:Stock,transactionType:TransactionType){
         let transactionVc = TransactionViewController(router: self, instrument: instrument, transactionType: transactionType)
         navigationController.present(transactionVc, animated: true, completion: nil)
     }

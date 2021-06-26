@@ -35,6 +35,11 @@
 		56E4C5592667D1EA007721C0 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E4C5582667D1EA007721C0 /* Presenter.swift */; };
 		56E5D20C2672E086004A9A83 /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E5D20B2672E086004A9A83 /* TransactionType.swift */; };
 		56E5D20F2672E13D004A9A83 /* TransactionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E5D20E2672E13D004A9A83 /* TransactionCellView.swift */; };
+		9F042FE72685F20D005106EA /* AlphaVantageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F042FE62685F20D005106EA /* AlphaVantageAPI.swift */; };
+		9F042FEE2686020C005106EA /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F042FED2686020C005106EA /* Stock.swift */; };
+		9F042FF12686024E005106EA /* Stocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F042FF02686024E005106EA /* Stocks.swift */; };
+		9F042FF7268629ED005106EA /* PolygonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F042FF6268629ED005106EA /* PolygonAPI.swift */; };
+		9F042FFA26862A70005106EA /* AggregateBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F042FF926862A70005106EA /* AggregateBars.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +73,11 @@
 		56E4C5582667D1EA007721C0 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		56E5D20B2672E086004A9A83 /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
 		56E5D20E2672E13D004A9A83 /* TransactionCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCellView.swift; sourceTree = "<group>"; };
+		9F042FE62685F20D005106EA /* AlphaVantageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaVantageAPI.swift; sourceTree = "<group>"; };
+		9F042FED2686020C005106EA /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		9F042FF02686024E005106EA /* Stocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stocks.swift; sourceTree = "<group>"; };
+		9F042FF6268629ED005106EA /* PolygonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolygonAPI.swift; sourceTree = "<group>"; };
+		9F042FF926862A70005106EA /* AggregateBars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregateBars.swift; sourceTree = "<group>"; };
 		E9DF102B3D6EE864C53C4BE2 /* Pods-SimplePortfolio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimplePortfolio.release.xcconfig"; path = "Target Support Files/Pods-SimplePortfolio/Pods-SimplePortfolio.release.xcconfig"; sourceTree = "<group>"; };
 		ECAAFC83DAD63BF4ABFD592F /* Pods-SimplePortfolio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimplePortfolio.debug.xcconfig"; path = "Target Support Files/Pods-SimplePortfolio/Pods-SimplePortfolio.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +121,9 @@
 				56E5D20B2672E086004A9A83 /* TransactionType.swift */,
 				56AEDB60266BC5FD0087898A /* Transactions.swift */,
 				56E4C54A2667C19E007721C0 /* Instrument.swift */,
+				9F042FED2686020C005106EA /* Stock.swift */,
+				9F042FF02686024E005106EA /* Stocks.swift */,
+				9F042FF926862A70005106EA /* AggregateBars.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -118,6 +131,7 @@
 		56AEDB67266BC61F0087898A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9F042FFC268630B0005106EA /* Plot */,
 				56E4C5502667CB5D007721C0 /* DiscoverCellView.swift */,
 				56E4C54D2667CB50007721C0 /* PortolioCellView.swift */,
 				56E5D20E2672E13D004A9A83 /* TransactionCellView.swift */,
@@ -160,6 +174,7 @@
 				56E12E5926652D7800898D7A /* Info.plist */,
 				56E12E4E26652D7500898D7A /* SimplePortfolio.xcdatamodeld */,
 				56E12E5326652D7800898D7A /* Preview Content */,
+				9F042FF5268629B5005106EA /* DataLayer */,
 			);
 			path = SimplePortfolio;
 			sourceTree = "<group>";
@@ -183,6 +198,22 @@
 				567B8413266683B9002A73C7 /* InstrumentViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9F042FF5268629B5005106EA /* DataLayer */ = {
+			isa = PBXGroup;
+			children = (
+				9F042FE62685F20D005106EA /* AlphaVantageAPI.swift */,
+				9F042FF6268629ED005106EA /* PolygonAPI.swift */,
+			);
+			path = DataLayer;
+			sourceTree = "<group>";
+		};
+		9F042FFC268630B0005106EA /* Plot */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Plot;
 			sourceTree = "<group>";
 		};
 		FDE7FD2D4C372BB767C5C6A3 /* Pods */ = {
@@ -309,16 +340,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				56E12E5026652D7500898D7A /* SimplePortfolio.xcdatamodeld in Sources */,
+				9F042FFA26862A70005106EA /* AggregateBars.swift in Sources */,
 				56E12E6B2665342F00898D7A /* PortfolioViewController.swift in Sources */,
 				56E12E6F266534A900898D7A /* DiscoverViewController.swift in Sources */,
 				567B842126669229002A73C7 /* ThemeProtocol.swift in Sources */,
+				9F042FEE2686020C005106EA /* Stock.swift in Sources */,
 				56E5D20C2672E086004A9A83 /* TransactionType.swift in Sources */,
+				9F042FE72685F20D005106EA /* AlphaVantageAPI.swift in Sources */,
 				56E12E4926652D7500898D7A /* AppDelegate.swift in Sources */,
 				567B8411266683A7002A73C7 /* PortfolioInstrumentViewController.swift in Sources */,
 				567B84272666925C002A73C7 /* LightTheme.swift in Sources */,
 				56E4C54B2667C19E007721C0 /* Instrument.swift in Sources */,
 				567B842426669251002A73C7 /* ThemeKey.swift in Sources */,
 				56AEDB61266BC5FD0087898A /* Transactions.swift in Sources */,
+				9F042FF7268629ED005106EA /* PolygonAPI.swift in Sources */,
 				56E12E4B26652D7500898D7A /* SceneDelegate.swift in Sources */,
 				56E4C54E2667CB50007721C0 /* PortolioCellView.swift in Sources */,
 				56E12E78266534FB00898D7A /* TransactionViewController.swift in Sources */,
@@ -328,6 +363,7 @@
 				56E4C5592667D1EA007721C0 /* Presenter.swift in Sources */,
 				56E12E4D26652D7500898D7A /* ContentView.swift in Sources */,
 				567B841C266690ED002A73C7 /* UIViewController+ThemeManager.swift in Sources */,
+				9F042FF12686024E005106EA /* Stocks.swift in Sources */,
 				56E12E72266534C100898D7A /* SettingsViewController.swift in Sources */,
 				56E5D20F2672E13D004A9A83 /* TransactionCellView.swift in Sources */,
 				56E4C5482667BD02007721C0 /* DarkTheme.swift in Sources */,

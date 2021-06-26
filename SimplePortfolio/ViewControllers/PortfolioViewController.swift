@@ -77,7 +77,7 @@ class PortfolioViewController: UIViewController,UITableViewDelegate{
     }()
     
     private var presenter:Presenter!
-    private var instruments:[Instrument]!
+    private var instruments:[Stock]!
     private var status:Status!
     
     init(router: AppRouter){
@@ -173,30 +173,31 @@ extension PortfolioViewController:UITableViewDataSource{
         cell = tableView.dequeueReusableCell(withIdentifier: "PortfolioCell", for: indexPath as IndexPath) as? PortfolioCellView
         
         cell.labelName.text = instruments[indexPath.row].name
-        cell.labelPrice.text = String(instruments[indexPath.row].price)+"$"
-        cell.labelChange.text = String(instruments[indexPath.row].change)+"%"
-        
-        cell.labelName.textColor = theme.fontColor
-        cell.labelPrice.textColor = theme.fontColor
-        if (instruments[indexPath.row].change < 0){
-            cell.labelChange.textColor = theme.redColor
-        } else {
-            cell.labelChange.textColor = theme.greenColor
-        }
-        cell.labelQuantity.text = String(instruments[indexPath.row].quantity)
-        cell.labelQuantity.textColor = theme.valuesColor
-        cell.labelValue.text = String(instruments[indexPath.row].value)+"$"
-        cell.labelValue.textColor = theme.valuesColor
-        
-        cell.backgroundColor = theme.cellColor
-        
-        cell.layer.cornerRadius = 8
-        cell.layer.masksToBounds = true
-        
-        let url = NSURL(string: instruments[indexPath.row].imageurl)! as URL
-        if let imageData: NSData = NSData(contentsOf: url) {
-            cell.imageIcon.image = UIImage(data: imageData as Data)
-        }
+        cell.labelSymbol.text = instruments[indexPath.row].symbol
+//        cell.labelPrice.text = String(instruments[indexPath.row].price)+"$"
+//        cell.labelChange.text = String(instruments[indexPath.row].change)+"%"
+//
+//        cell.labelName.textColor = theme.fontColor
+//        cell.labelPrice.textColor = theme.fontColor
+//        if (instruments[indexPath.row].change < 0){
+//            cell.labelChange.textColor = theme.redColor
+//        } else {
+//            cell.labelChange.textColor = theme.greenColor
+//        }
+//        cell.labelQuantity.text = String(instruments[indexPath.row].quantity)
+//        cell.labelQuantity.textColor = theme.valuesColor
+//        cell.labelValue.text = String(instruments[indexPath.row].value)+"$"
+//        cell.labelValue.textColor = theme.valuesColor
+//
+//        cell.backgroundColor = theme.cellColor
+//
+//        cell.layer.cornerRadius = 8
+//        cell.layer.masksToBounds = true
+//
+//        let url = NSURL(string: instruments[indexPath.row].imageurl)! as URL
+//        if let imageData: NSData = NSData(contentsOf: url) {
+//            cell.imageIcon.image = UIImage(data: imageData as Data)
+//        }
         
         return cell
         

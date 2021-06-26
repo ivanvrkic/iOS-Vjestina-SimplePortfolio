@@ -8,7 +8,7 @@
 import Foundation
 struct Transaction{
     let quantity: Float
-    let instrument: Instrument
+    let instrument: Stock
     let priceAtMoment: Float
     let type: TransactionType
 }

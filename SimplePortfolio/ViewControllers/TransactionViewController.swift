@@ -12,7 +12,7 @@ class TransactionViewController:UIViewController {
     
     private var transactionType:TransactionType!
     private var transaction:Transaction!
-    private var instrument:Instrument!
+    private var instrument:Stock!
     private var router:AppRouter!
     private var theme:ThemeProtocol!
     private var presenter:Presenter!
@@ -53,7 +53,7 @@ class TransactionViewController:UIViewController {
         return view
     }()
     
-    init(router:AppRouter,instrument:Instrument, transactionType:TransactionType){
+    init(router:AppRouter,instrument:Stock, transactionType:TransactionType){
         self.router = router
         self.instrument = instrument
         self.transactionType = transactionType
@@ -93,17 +93,16 @@ class TransactionViewController:UIViewController {
         if (transactionType == .buy){
             button.setTitle("Buy", for: .normal)
             button.backgroundColor = theme.greenColor
-            labelTitle.text = "Buy "+instrument.name
-        } else {
+            labelTitle.text = "Buy "+instrument.name!
             button.setTitle("Sell", for: .normal)
             button.backgroundColor = theme.redColor
-            labelTitle.text = "Sell "+instrument.name
+            labelTitle.text = "Sell "+instrument.name!
         }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        widthOfComponents = self.view.frame.size.width * 0.8
+        widthOfComponents = self.view.frame.size.width * 0.97
         leadingMargin = self.view.frame.size.width * 0.1
     }
     

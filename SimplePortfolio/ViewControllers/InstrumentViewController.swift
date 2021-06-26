@@ -11,7 +11,7 @@ class InstrumentViewController: UIViewController{
     
     internal var router:AppRouter!
     internal var theme:ThemeProtocol!
-    internal var instrument:Instrument
+    internal var instrument:Stock
     
     internal var leadingMargin:CGFloat!
     internal var titleMargin:CGFloat = 80
@@ -91,7 +91,7 @@ class InstrumentViewController: UIViewController{
         return view
     }()
     
-    init(router: AppRouter,instrument:Instrument){
+    init(router: AppRouter,instrument:Stock){
         self.router = router
         self.instrument = instrument
         super.init(nibName: nil, bundle: nil)
@@ -133,25 +133,25 @@ class InstrumentViewController: UIViewController{
     internal func styleViews(){
         view.backgroundColor = theme.backgroundColor
         labelPrice.textColor = theme.fontColor
-        labelPrice.text = String(instrument.price)+"$"
-        labelChange.text = String(instrument.change)+"%"
+//        labelPrice.text = String(instrument.price)+"$"
+//        labelChange.text = String(instrument.change)+"%"
         labelName.textColor = theme.fontColor
         labelName.text = instrument.name
-        if (instrument.change < 0){
-            labelChange.textColor = theme.redColor
-        } else {
-            labelChange.textColor = theme.greenColor
-        }
-        labelMarketCap.text = "Market cap: "+String(instrument.marketCap)+"$"
-        labelMarketCap.textColor = theme.fontColor
-        labelVolume.text = "Volume: "+String(instrument.volume)+"$"
-        labelVolume.textColor = theme.fontColor
-        labelDescription.text = instrument.description
-        labelDescription.textColor = theme.fontColor
-        let url = NSURL(string: instrument.imageurl)! as URL
-        if let imageData: NSData = NSData(contentsOf: url) {
-            imageIcon.image = UIImage(data: imageData as Data)
-        }
+//        if (instrument.change < 0){
+//            labelChange.textColor = theme.redColor
+//        } else {
+//            labelChange.textColor = theme.greenColor
+//        }
+//        labelMarketCap.text = "Market cap: "+String(instrument.marketCap)+"$"
+//        labelMarketCap.textColor = theme.fontColor
+//        labelVolume.text = "Volume: "+String(instrument.volume)+"$"
+//        labelVolume.textColor = theme.fontColor
+//        labelDescription.text = instrument.description
+//        labelDescription.textColor = theme.fontColor
+//        let url = NSURL(string: instrument.imageurl)! as URL
+//        if let imageData: NSData = NSData(contentsOf: url) {
+//            imageIcon.image = UIImage(data: imageData as Data)
+//        }
     }
     
     override func viewDidLayoutSubviews() {

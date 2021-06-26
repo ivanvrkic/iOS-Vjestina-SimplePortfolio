@@ -35,10 +35,10 @@ class PortfolioCellView: DiscoverCellView{
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         stackVertical.spacing = 5
         stackVertical.distribution = .fillEqually
-        substackBottom.addArrangedSubview(labelQuantity)
-        substackBottom.addArrangedSubview(labelValue)
-        stackVertical.addArrangedSubview(substackBottom)
-        imageIcon.autoSetDimensions(to: CGSize(width: 90, height: 90))
+//        substackBottom.addArrangedSubview(labelQuantity)
+//        substackBottom.addArrangedSubview(labelValue)
+//        stackVertical.addArrangedSubview(substackBottom)
+//        imageIcon.autoSetDimensions(to: CGSize(width: 90, height: 90))
         
     }
     
