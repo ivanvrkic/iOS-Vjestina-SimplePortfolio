@@ -63,6 +63,12 @@ class Presenter:DiscoveryPresenter,PortfolioPresenter{
             completionHandler(stocks)
         }
     }
+    
+    func fetchStockGlobalQuote(symbol: String, completionHandler: @escaping (GlobalQuote) -> Void) {
+        DataService().fetchStockGlobalQuote(symbol: symbol){ stockQuote in
+            completionHandler(stockQuote)
+        }
+    }
 }
 
 

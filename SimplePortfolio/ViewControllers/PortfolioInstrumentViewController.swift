@@ -63,8 +63,8 @@ class PortfolioInstrumentViewController: InstrumentViewController, UITableViewDe
         
     }
     
-    override func styleViews(){
-        super.styleViews()
+    override func styleViews(stockQuote: GlobalQuote){
+        super.styleViews(stockQuote: stockQuote)
         labelValue.textColor = theme.fontColor
 //        labelValue.text = String(instrument.value)+"$"
         labelValue.font = UIFont.preferredFont(forTextStyle: .title2)

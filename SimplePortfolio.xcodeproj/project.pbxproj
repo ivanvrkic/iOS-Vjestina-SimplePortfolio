@@ -40,6 +40,7 @@
 		9F042FF12686024E005106EA /* Stocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F042FF02686024E005106EA /* Stocks.swift */; };
 		9F042FF7268629ED005106EA /* PolygonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F042FF6268629ED005106EA /* PolygonAPI.swift */; };
 		9F042FFA26862A70005106EA /* AggregateBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F042FF926862A70005106EA /* AggregateBars.swift */; };
+		9F042FFF2688B946005106EA /* StockGlobalQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F042FFE2688B945005106EA /* StockGlobalQuote.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		9F042FF02686024E005106EA /* Stocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stocks.swift; sourceTree = "<group>"; };
 		9F042FF6268629ED005106EA /* PolygonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolygonAPI.swift; sourceTree = "<group>"; };
 		9F042FF926862A70005106EA /* AggregateBars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregateBars.swift; sourceTree = "<group>"; };
+		9F042FFE2688B945005106EA /* StockGlobalQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockGlobalQuote.swift; sourceTree = "<group>"; };
 		E9DF102B3D6EE864C53C4BE2 /* Pods-SimplePortfolio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimplePortfolio.release.xcconfig"; path = "Target Support Files/Pods-SimplePortfolio/Pods-SimplePortfolio.release.xcconfig"; sourceTree = "<group>"; };
 		ECAAFC83DAD63BF4ABFD592F /* Pods-SimplePortfolio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimplePortfolio.debug.xcconfig"; path = "Target Support Files/Pods-SimplePortfolio/Pods-SimplePortfolio.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,6 +126,7 @@
 				9F042FED2686020C005106EA /* Stock.swift */,
 				9F042FF02686024E005106EA /* Stocks.swift */,
 				9F042FF926862A70005106EA /* AggregateBars.swift */,
+				9F042FFE2688B945005106EA /* StockGlobalQuote.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				56E12E6F266534A900898D7A /* DiscoverViewController.swift in Sources */,
 				567B842126669229002A73C7 /* ThemeProtocol.swift in Sources */,
 				9F042FEE2686020C005106EA /* Stock.swift in Sources */,
+				9F042FFF2688B946005106EA /* StockGlobalQuote.swift in Sources */,
 				56E5D20C2672E086004A9A83 /* TransactionType.swift in Sources */,
 				9F042FE72685F20D005106EA /* AlphaVantageAPI.swift in Sources */,
 				56E12E4926652D7500898D7A /* AppDelegate.swift in Sources */,

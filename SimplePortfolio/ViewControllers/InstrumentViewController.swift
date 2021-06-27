@@ -13,14 +13,23 @@ class InstrumentViewController: UIViewController{
     internal var theme:ThemeProtocol!
     internal var instrument:Stock
     
+    private var presenter:Presenter!
+    
     internal var leadingMargin:CGFloat!
-    internal var titleMargin:CGFloat = 80
+    internal var titleMargin:CGFloat = 100
     internal var smallMargin:CGFloat = 20
     
     //DIMENZIJE
     internal var widthOfComponents:CGFloat!
     internal var heightSmall:CGFloat = 30
     internal var heightBig:CGFloat = 50
+    
+    var labelSymbol:UILabel = {
+        let label = UILabel()
+        label.text = "symbol"
+        label.font=UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.black)
+        return label
+    }()
     
     var labelName:UILabel = {
         let label = UILabel()
@@ -39,7 +48,11 @@ class InstrumentViewController: UIViewController{
         label.text = "change"
         return label
     }()
-    
+    var labelChangePercent:UILabel = {
+        let label = UILabel()
+        label.text = "change percent"
+        return label
+    }()
     var labelMarketCap:UILabel = {
         let label = UILabel()
         label.text = "market cap"
@@ -95,29 +108,30 @@ class InstrumentViewController: UIViewController{
         self.router = router
         self.instrument = instrument
         super.init(nibName: nil, bundle: nil)
+        presenter = Presenter()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    
+
     override func viewWillAppear(_ animated: Bool) {
         theme = getCurrentTheme()
-        styleViews()
+        fetchInfo()
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     override func viewDidLoad() {
-        stackVertical.addArrangedSubview(labelName)
-        stackVertical.addArrangedSubview(labelPrice)
-        stackVertical.addArrangedSubview(labelChange)
-        stackHorizontal.addArrangedSubview(imageIcon)
-        stackHorizontal.addArrangedSubview(stackVertical)
+        stack.addArrangedSubview(labelSymbol)
+        stack.addArrangedSubview(labelName)
+        stack.addArrangedSubview(labelPrice)
+        stack.addArrangedSubview(labelChange)
+        stack.addArrangedSubview(labelChangePercent)
         stack.addArrangedSubview(stackHorizontal)
-        stack.addArrangedSubview(labelMarketCap)
+//        stack.addArrangedSubview(labelMarketCap)
         stack.addArrangedSubview(labelVolume)
-        stack.addArrangedSubview(labelDescription)
+//        stack.addArrangedSubview(labelDescription)
         view.addSubview(stack)
         
         widthOfComponents = self.view.frame.size.width * 0.8
@@ -130,22 +144,25 @@ class InstrumentViewController: UIViewController{
         imageIcon.autoSetDimensions(to: CGSize(width: 80, height: 80))
     }
     
-    internal func styleViews(){
+    internal func styleViews(stockQuote: GlobalQuote){
         view.backgroundColor = theme.backgroundColor
+        labelSymbol.text=stockQuote.symbol
+        labelSymbol.textColor = theme.fontColor
         labelPrice.textColor = theme.fontColor
-//        labelPrice.text = String(instrument.price)+"$"
-//        labelChange.text = String(instrument.change)+"%"
+        labelPrice.text = String(stockQuote.price)+"$"
+        labelChange.text = String(stockQuote.change)+"$"
+        labelChangePercent.text = String(stockQuote.changePercent)
         labelName.textColor = theme.fontColor
         labelName.text = instrument.name
-//        if (instrument.change < 0){
-//            labelChange.textColor = theme.redColor
-//        } else {
-//            labelChange.textColor = theme.greenColor
-//        }
+        if (Double(stockQuote.change)! < 0){
+            labelChange.textColor = theme.redColor
+        } else {
+            labelChange.textColor = theme.greenColor
+        }
 //        labelMarketCap.text = "Market cap: "+String(instrument.marketCap)+"$"
 //        labelMarketCap.textColor = theme.fontColor
-//        labelVolume.text = "Volume: "+String(instrument.volume)+"$"
-//        labelVolume.textColor = theme.fontColor
+        labelVolume.text = "Volume: "+String(stockQuote.volume)+"$"
+        labelVolume.textColor = theme.fontColor
 //        labelDescription.text = instrument.description
 //        labelDescription.textColor = theme.fontColor
 //        let url = NSURL(string: instrument.imageurl)! as URL
@@ -160,4 +177,12 @@ class InstrumentViewController: UIViewController{
         leadingMargin = self.view.frame.size.width * 0.1
     }
     
+    func fetchInfo() {
+        presenter.fetchStockGlobalQuote(symbol: instrument.symbol!) { stockQuote in
+            DispatchQueue.main.async {
+                self.styleViews(stockQuote: stockQuote)
+            }
+        }
+    }
+        
 }

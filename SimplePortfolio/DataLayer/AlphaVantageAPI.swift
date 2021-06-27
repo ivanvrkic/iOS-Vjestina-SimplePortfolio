@@ -30,14 +30,35 @@ class DataService{
         let session = URLSession.shared
         let task = session.dataTask(with: url) { (data, response, error) in
             if let error = error {
-                print("ERROR: \(error)")
+                print("err \(error)")
             }
             
             do {
                 let stocksList = try JSONDecoder().decode(Stocks.self, from: data ?? Data())
                 completionHandler(stocksList.bestMatches)
             } catch {
-                print("JSON ERROR: \(error)")
+                print("JSON err \(error)")
+            }
+        }
+        task.resume()
+    }
+    func fetchStockGlobalQuote(symbol: String, completionHandler: @escaping (GlobalQuote) -> Void){
+        let urlString = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=\(symbol)&apikey=9BD1Q7Q5BUQKQ7S7"
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                print("err \(error)")
+            }
+            
+            do {
+                let stockGlobalQuote = try JSONDecoder().decode(StockGlobalQuote.self, from: data ?? Data())
+                completionHandler(stockGlobalQuote.globalQuote)
+            } catch {
+                print("JSON err \(error)")
             }
         }
         task.resume()

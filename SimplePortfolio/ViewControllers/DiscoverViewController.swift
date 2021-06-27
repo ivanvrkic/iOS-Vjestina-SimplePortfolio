@@ -93,7 +93,6 @@ class DiscoverViewController: UIViewController{
         stack.autoPinEdge(toSuperviewEdge: .trailing, withInset: leadingMargin)
         stack.autoPinEdge(toSuperviewEdge: .top, withInset: titleMargin)
         
-        
         buttonSearch.autoAlignAxis(toSuperviewAxis: .horizontal)
         buttonSearch.autoPinEdge(toSuperviewEdge: .trailing,withInset: 5)
         
