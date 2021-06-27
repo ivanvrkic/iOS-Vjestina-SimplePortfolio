@@ -16,8 +16,8 @@ class DataService{
     
     func fetchTransactions() -> [Transaction]{
         let i1 = Stock(symbol: "AAPL", name: "Apple")
-        let c1 = Transaction(quantity: 3, instrument: i1, priceAtMoment: 200, type: .buy)
-        let c2 = Transaction(quantity: 2, instrument: i1, priceAtMoment: 300, type: .sell)
+        let c1 = Transaction(identifier: 1, quantity: 3, instrument: i1, priceAtMoment: 200, type: .buy)
+        let c2 = Transaction(identifier: 2, quantity: 2, instrument: i1, priceAtMoment: 300, type: .sell)
         return [c1,c2]
     }
     

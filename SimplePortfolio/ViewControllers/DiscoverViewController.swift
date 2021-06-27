@@ -77,7 +77,7 @@ class DiscoverViewController: UIViewController{
     }
     
     override func viewDidLoad() {
-        presenter = Presenter()
+        presenter = router.getPresenter()
         instruments = presenter.fetchForDiscovery()
         tableView.delegate = self
         tableView.dataSource = self

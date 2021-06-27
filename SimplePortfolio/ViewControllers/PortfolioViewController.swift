@@ -90,7 +90,7 @@ class PortfolioViewController: UIViewController,UITableViewDelegate{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        presenter = Presenter()
+        presenter = router.getPresenter()
         instruments = presenter.fetchForPortfolio()
         theme = getCurrentTheme()
         styleViews()
@@ -120,7 +120,7 @@ class PortfolioViewController: UIViewController,UITableViewDelegate{
         tableView.autoPinEdge(.top, to: .bottom, of: topView,withOffset: 10)
         tableView.autoPinEdge(toSuperviewEdge: .bottom)
         
-        presenter = Presenter()
+        presenter = router.getPresenter()
         status = presenter.fetchStatus()
         labelAmount.text = String(status.valueOfPortfolio)+"$"
         labelChangeAmount.text = String(status.changeInCurrency)+"$"

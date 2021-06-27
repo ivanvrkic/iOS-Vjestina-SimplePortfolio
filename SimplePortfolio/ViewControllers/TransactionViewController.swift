@@ -65,7 +65,7 @@ class TransactionViewController:UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        presenter = Presenter()
+        presenter = router.getPresenter()
         theme = getCurrentTheme()
         styleViews()
         navigationController?.setNavigationBarHidden(false, animated: false)
@@ -109,7 +109,7 @@ class TransactionViewController:UIViewController {
     @objc private func buttonPressed(){
         let quantity = Float(textQuantity.text!)
         let price = Float(textPrice.text!)
-        let transaction = Transaction(quantity: quantity!, instrument: instrument, priceAtMoment: price!, type: transactionType)
+        let transaction = Transaction(identifier: 3, quantity: quantity!, instrument: instrument, priceAtMoment: price!, type: transactionType)
         presenter.makeTransaction(transaction: transaction)
         router.dismiss()
     }

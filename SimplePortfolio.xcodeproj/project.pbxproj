@@ -14,7 +14,7 @@
 		567B842126669229002A73C7 /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567B842026669229002A73C7 /* ThemeProtocol.swift */; };
 		567B842426669251002A73C7 /* ThemeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567B842326669251002A73C7 /* ThemeKey.swift */; };
 		567B84272666925C002A73C7 /* LightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567B84262666925C002A73C7 /* LightTheme.swift */; };
-		56AEDB61266BC5FD0087898A /* Transactions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AEDB60266BC5FD0087898A /* Transactions.swift */; };
+		56AEDB61266BC5FD0087898A /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AEDB60266BC5FD0087898A /* Transaction.swift */; };
 		56AEDB64266BC6060087898A /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AEDB63266BC6060087898A /* Status.swift */; };
 		56E12E4926652D7500898D7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E12E4826652D7500898D7A /* AppDelegate.swift */; };
 		56E12E4B26652D7500898D7A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E12E4A26652D7500898D7A /* SceneDelegate.swift */; };
@@ -41,6 +41,16 @@
 		9F042FF7268629ED005106EA /* PolygonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F042FF6268629ED005106EA /* PolygonAPI.swift */; };
 		9F042FFA26862A70005106EA /* AggregateBars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F042FF926862A70005106EA /* AggregateBars.swift */; };
 		9F042FFF2688B946005106EA /* StockGlobalQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F042FFE2688B945005106EA /* StockGlobalQuote.swift */; };
+		9F04300B26890D17005106EA /* CDTransaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F04300726890D17005106EA /* CDTransaction+CoreDataClass.swift */; };
+		9F04300C26890D17005106EA /* CDStock+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F04300826890D17005106EA /* CDStock+CoreDataClass.swift */; };
+		9F04300D26890D17005106EA /* CDStock+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F04300926890D17005106EA /* CDStock+CoreDataProperties.swift */; };
+		9F04300E26890D17005106EA /* CDTransaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F04300A26890D17005106EA /* CDTransaction+CoreDataProperties.swift */; };
+		9F04301126891192005106EA /* CoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F04301026891192005106EA /* CoreDataSource.swift */; };
+		9F04301626891337005106EA /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F04301526891337005106EA /* CoreDataStack.swift */; };
+		9F04301A268913EE005106EA /* Transaction+CD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F043019268913EE005106EA /* Transaction+CD.swift */; };
+		9F04301D2689150E005106EA /* Stock+CD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F04301C2689150E005106EA /* Stock+CD.swift */; };
+		9F04302126891D00005106EA /* DataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F04302026891D00005106EA /* DataRepository.swift */; };
+		9F04302526891D48005106EA /* CoreDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F04302426891D48005106EA /* CoreDataSourceProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +61,7 @@
 		567B842026669229002A73C7 /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
 		567B842326669251002A73C7 /* ThemeKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeKey.swift; sourceTree = "<group>"; };
 		567B84262666925C002A73C7 /* LightTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightTheme.swift; sourceTree = "<group>"; };
-		56AEDB60266BC5FD0087898A /* Transactions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transactions.swift; sourceTree = "<group>"; };
+		56AEDB60266BC5FD0087898A /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		56AEDB63266BC6060087898A /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		56E12E4526652D7500898D7A /* SimplePortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplePortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56E12E4826652D7500898D7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +90,16 @@
 		9F042FF6268629ED005106EA /* PolygonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolygonAPI.swift; sourceTree = "<group>"; };
 		9F042FF926862A70005106EA /* AggregateBars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregateBars.swift; sourceTree = "<group>"; };
 		9F042FFE2688B945005106EA /* StockGlobalQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockGlobalQuote.swift; sourceTree = "<group>"; };
+		9F04300726890D17005106EA /* CDTransaction+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CDTransaction+CoreDataClass.swift"; path = "SimplePortfolio/CDTransaction+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		9F04300826890D17005106EA /* CDStock+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CDStock+CoreDataClass.swift"; path = "SimplePortfolio/CDStock+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		9F04300926890D17005106EA /* CDStock+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CDStock+CoreDataProperties.swift"; path = "SimplePortfolio/CDStock+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		9F04300A26890D17005106EA /* CDTransaction+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CDTransaction+CoreDataProperties.swift"; path = "SimplePortfolio/CDTransaction+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		9F04301026891192005106EA /* CoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSource.swift; sourceTree = "<group>"; };
+		9F04301526891337005106EA /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		9F043019268913EE005106EA /* Transaction+CD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CD.swift"; sourceTree = "<group>"; };
+		9F04301C2689150E005106EA /* Stock+CD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Stock+CD.swift"; sourceTree = "<group>"; };
+		9F04302026891D00005106EA /* DataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRepository.swift; sourceTree = "<group>"; };
+		9F04302426891D48005106EA /* CoreDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSourceProtocol.swift; sourceTree = "<group>"; };
 		E9DF102B3D6EE864C53C4BE2 /* Pods-SimplePortfolio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimplePortfolio.release.xcconfig"; path = "Target Support Files/Pods-SimplePortfolio/Pods-SimplePortfolio.release.xcconfig"; sourceTree = "<group>"; };
 		ECAAFC83DAD63BF4ABFD592F /* Pods-SimplePortfolio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimplePortfolio.debug.xcconfig"; path = "Target Support Files/Pods-SimplePortfolio/Pods-SimplePortfolio.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,9 +141,11 @@
 			children = (
 				56AEDB63266BC6060087898A /* Status.swift */,
 				56E5D20B2672E086004A9A83 /* TransactionType.swift */,
-				56AEDB60266BC5FD0087898A /* Transactions.swift */,
+				56AEDB60266BC5FD0087898A /* Transaction.swift */,
+				9F043019268913EE005106EA /* Transaction+CD.swift */,
 				56E4C54A2667C19E007721C0 /* Instrument.swift */,
 				9F042FED2686020C005106EA /* Stock.swift */,
+				9F04301C2689150E005106EA /* Stock+CD.swift */,
 				9F042FF02686024E005106EA /* Stocks.swift */,
 				9F042FF926862A70005106EA /* AggregateBars.swift */,
 				9F042FFE2688B945005106EA /* StockGlobalQuote.swift */,
@@ -169,15 +191,13 @@
 				56E12E692665341800898D7A /* ViewControllers */,
 				56AEDB67266BC61F0087898A /* Views */,
 				56E4C5582667D1EA007721C0 /* Presenter.swift */,
+				9F04300226890C68005106EA /* Data */,
 				567B841F26669211002A73C7 /* Theme */,
 				56E12E5126652D7800898D7A /* Assets.xcassets */,
-				56AEDB66266BC60B0087898A /* Model */,
 				56E12E4C26652D7500898D7A /* ContentView.swift */,
 				56E12E5626652D7800898D7A /* LaunchScreen.storyboard */,
 				56E12E5926652D7800898D7A /* Info.plist */,
-				56E12E4E26652D7500898D7A /* SimplePortfolio.xcdatamodeld */,
 				56E12E5326652D7800898D7A /* Preview Content */,
-				9F042FF5268629B5005106EA /* DataLayer */,
 			);
 			path = SimplePortfolio;
 			sourceTree = "<group>";
@@ -203,20 +223,70 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		9F042FF5268629B5005106EA /* DataLayer */ = {
-			isa = PBXGroup;
-			children = (
-				9F042FE62685F20D005106EA /* AlphaVantageAPI.swift */,
-				9F042FF6268629ED005106EA /* PolygonAPI.swift */,
-			);
-			path = DataLayer;
-			sourceTree = "<group>";
-		};
 		9F042FFC268630B0005106EA /* Plot */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Plot;
+			sourceTree = "<group>";
+		};
+		9F04300226890C68005106EA /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				9F04301F26891CEB005106EA /* Repository */,
+				56AEDB66266BC60B0087898A /* Model */,
+				9F04300326890C8D005106EA /* DataSources */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		9F04300326890C8D005106EA /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				9F04300526890CBF005106EA /* NetworkSource */,
+				9F04300426890CB8005106EA /* CoreDataSource */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		9F04300426890CB8005106EA /* CoreDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				56E12E4E26652D7500898D7A /* SimplePortfolio.xcdatamodeld */,
+				9F04301026891192005106EA /* CoreDataSource.swift */,
+				9F04302426891D48005106EA /* CoreDataSourceProtocol.swift */,
+				9F04301526891337005106EA /* CoreDataStack.swift */,
+				9F04300626890CEC005106EA /* ManagedModels */,
+			);
+			path = CoreDataSource;
+			sourceTree = "<group>";
+		};
+		9F04300526890CBF005106EA /* NetworkSource */ = {
+			isa = PBXGroup;
+			children = (
+				9F042FE62685F20D005106EA /* AlphaVantageAPI.swift */,
+				9F042FF6268629ED005106EA /* PolygonAPI.swift */,
+			);
+			path = NetworkSource;
+			sourceTree = "<group>";
+		};
+		9F04300626890CEC005106EA /* ManagedModels */ = {
+			isa = PBXGroup;
+			children = (
+				9F04300826890D17005106EA /* CDStock+CoreDataClass.swift */,
+				9F04300926890D17005106EA /* CDStock+CoreDataProperties.swift */,
+				9F04300726890D17005106EA /* CDTransaction+CoreDataClass.swift */,
+				9F04300A26890D17005106EA /* CDTransaction+CoreDataProperties.swift */,
+			);
+			path = ManagedModels;
+			sourceTree = "<group>";
+		};
+		9F04301F26891CEB005106EA /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				9F04302026891D00005106EA /* DataRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		FDE7FD2D4C372BB767C5C6A3 /* Pods */ = {
@@ -345,9 +415,14 @@
 				56E12E5026652D7500898D7A /* SimplePortfolio.xcdatamodeld in Sources */,
 				9F042FFA26862A70005106EA /* AggregateBars.swift in Sources */,
 				56E12E6B2665342F00898D7A /* PortfolioViewController.swift in Sources */,
+				9F04301626891337005106EA /* CoreDataStack.swift in Sources */,
 				56E12E6F266534A900898D7A /* DiscoverViewController.swift in Sources */,
+				9F04301A268913EE005106EA /* Transaction+CD.swift in Sources */,
+				9F04302126891D00005106EA /* DataRepository.swift in Sources */,
 				567B842126669229002A73C7 /* ThemeProtocol.swift in Sources */,
+				9F04300C26890D17005106EA /* CDStock+CoreDataClass.swift in Sources */,
 				9F042FEE2686020C005106EA /* Stock.swift in Sources */,
+				9F04300D26890D17005106EA /* CDStock+CoreDataProperties.swift in Sources */,
 				9F042FFF2688B946005106EA /* StockGlobalQuote.swift in Sources */,
 				56E5D20C2672E086004A9A83 /* TransactionType.swift in Sources */,
 				9F042FE72685F20D005106EA /* AlphaVantageAPI.swift in Sources */,
@@ -356,20 +431,25 @@
 				567B84272666925C002A73C7 /* LightTheme.swift in Sources */,
 				56E4C54B2667C19E007721C0 /* Instrument.swift in Sources */,
 				567B842426669251002A73C7 /* ThemeKey.swift in Sources */,
-				56AEDB61266BC5FD0087898A /* Transactions.swift in Sources */,
+				9F04301126891192005106EA /* CoreDataSource.swift in Sources */,
+				56AEDB61266BC5FD0087898A /* Transaction.swift in Sources */,
 				9F042FF7268629ED005106EA /* PolygonAPI.swift in Sources */,
 				56E12E4B26652D7500898D7A /* SceneDelegate.swift in Sources */,
+				9F04300E26890D17005106EA /* CDTransaction+CoreDataProperties.swift in Sources */,
+				9F04301D2689150E005106EA /* Stock+CD.swift in Sources */,
 				56E4C54E2667CB50007721C0 /* PortolioCellView.swift in Sources */,
 				56E12E78266534FB00898D7A /* TransactionViewController.swift in Sources */,
 				567B8414266683B9002A73C7 /* InstrumentViewController.swift in Sources */,
 				56E12E6126652E0800898D7A /* AppRouter.swift in Sources */,
 				56AEDB64266BC6060087898A /* Status.swift in Sources */,
+				9F04300B26890D17005106EA /* CDTransaction+CoreDataClass.swift in Sources */,
 				56E4C5592667D1EA007721C0 /* Presenter.swift in Sources */,
 				56E12E4D26652D7500898D7A /* ContentView.swift in Sources */,
 				567B841C266690ED002A73C7 /* UIViewController+ThemeManager.swift in Sources */,
 				9F042FF12686024E005106EA /* Stocks.swift in Sources */,
 				56E12E72266534C100898D7A /* SettingsViewController.swift in Sources */,
 				56E5D20F2672E13D004A9A83 /* TransactionCellView.swift in Sources */,
+				9F04302526891D48005106EA /* CoreDataSourceProtocol.swift in Sources */,
 				56E4C5482667BD02007721C0 /* DarkTheme.swift in Sources */,
 				56E4C5512667CB5D007721C0 /* DiscoverCellView.swift in Sources */,
 			);

@@ -108,7 +108,7 @@ class InstrumentViewController: UIViewController{
         self.router = router
         self.instrument = instrument
         super.init(nibName: nil, bundle: nil)
-        presenter = Presenter()
+        presenter = router.getPresenter()
     }
     
     required init?(coder: NSCoder) {

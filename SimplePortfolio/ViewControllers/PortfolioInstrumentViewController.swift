@@ -117,10 +117,12 @@ class PortfolioInstrumentViewController: InstrumentViewController, UITableViewDe
     
     @objc private func sellPressed(){
         router.presentTransaction(instrument: instrument, transactionType: .sell)
+        tableView.reloadData()
     }
     
     @objc private func buyPressed(){
         router.presentTransaction(instrument: instrument, transactionType: .buy)
+        tableView.reloadData()
     }
 
 }
@@ -131,7 +133,7 @@ extension PortfolioInstrumentViewController:UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter = Presenter()
+        presenter = router.getPresenter()
         transactions = presenter.fetchTransactions(instrument: instrument)
         return transactions.count
     }

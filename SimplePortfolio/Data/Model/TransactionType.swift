@@ -6,7 +6,7 @@
 //
 
 import Foundation
-enum TransactionType{
+@objc public enum TransactionType: Int16{
     case buy
     case sell
 }

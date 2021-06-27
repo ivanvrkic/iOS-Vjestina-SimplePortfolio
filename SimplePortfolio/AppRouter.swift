@@ -16,9 +16,14 @@ protocol AppRouterProtocol{
 class AppRouter: AppRouterProtocol{
     
     private let navigationController: UINavigationController!
+    private let presenter: Presenter
     
     init(navigationController: UINavigationController){
         self.navigationController = navigationController
+        let coreDataContext = CoreDataStack(modelName: "SimplePortfolio").managedContext
+        let dataRepository = DataRepository(
+            coreDataSource: CoreDataSource(coreDataContext: coreDataContext))
+        self.presenter = Presenter(dataRepository: dataRepository)
     }
     
     func setStart(in window: UIWindow?) {
@@ -47,6 +52,10 @@ class AppRouter: AppRouterProtocol{
     func showPortfolioInstrument(instrument:Stock){
         let instrumentVc = PortfolioInstrumentViewController(router: self, instrument: instrument)
         navigationController.pushViewController(instrumentVc, animated: false)
+    }
+    
+    func getPresenter() -> Presenter{
+        return presenter
     }
     
     func presentTransaction(instrument:Stock,transactionType:TransactionType){

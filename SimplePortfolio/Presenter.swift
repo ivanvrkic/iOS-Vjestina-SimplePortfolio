@@ -22,20 +22,30 @@ class Presenter:DiscoveryPresenter,PortfolioPresenter{
     
     var stocks:[Stock]!
     var transactions:[Transaction]!
+    private let dataRepository: DataRepository
+    private let dataService: DataService
     
+    init(dataRepository: DataRepository) {
+        self.dataRepository = dataRepository
+        self.dataService = DataService()
+    }
     
     func fetchForPortfolio() -> [Stock] {
-        stocks = DataService().fetchForDiscovery()
+        stocks = dataService.fetchForDiscovery()
         return stocks
     }
     
     func fetchTransactions(instrument: Stock) -> [Transaction] {
-        transactions = DataService().fetchTransactions()
-        return transactions
+        dataRepository.fetchLocalData(stock: instrument)
     }
     
     func makeTransaction(transaction: Transaction) {
-        print("Dodano")
+        do {
+            try dataRepository.saveNewLocalData(transaction: transaction)
+        }
+        catch {
+            print("Error making a transaction: \(error)")
+        }
     }
     
     func fetchStatus() -> Status {
@@ -44,7 +54,7 @@ class Presenter:DiscoveryPresenter,PortfolioPresenter{
     }
     
     func fetchForDiscovery() -> [Stock]{
-        stocks = DataService().fetchForDiscovery()
+        stocks = dataService.fetchForDiscovery()
         return stocks
     }
 //    func fetchFiltered(filter:String) -> [Instrument]{
@@ -59,16 +69,25 @@ class Presenter:DiscoveryPresenter,PortfolioPresenter{
 //    }
     
     func fetchStocks(keyword: String, completionHandler: @escaping ([Stock]) -> Void) {
-        DataService().fetchStocks(keyword: keyword){ stocks in
+        dataService.fetchStocks(keyword: keyword){ stocks in
             completionHandler(stocks)
         }
     }
     
     func fetchStockGlobalQuote(symbol: String, completionHandler: @escaping (GlobalQuote) -> Void) {
-        DataService().fetchStockGlobalQuote(symbol: symbol){ stockQuote in
+        dataService.fetchStockGlobalQuote(symbol: symbol){ stockQuote in
             completionHandler(stockQuote)
         }
     }
+
+//    func getTransactions(stock: Stock) -> [Transaction] {
+//
+//    }
+
+    func deleteTransaction(withId id: Int) {
+        dataRepository.deleteLocalData(withId: id)
+    }
+
 }
 
 
