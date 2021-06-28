@@ -11,7 +11,7 @@ class PortfolioInstrumentViewController: InstrumentViewController, UITableViewDe
     
     private var transactions:[Transaction]!
     private var presenter:Presenter!
-    
+    private var totalQuantity: Float?
     var labelQuantity:UILabel = {
         let label = UILabel()
         label.text = "quantity"
@@ -56,6 +56,8 @@ class PortfolioInstrumentViewController: InstrumentViewController, UITableViewDe
     
     override init(router: AppRouter,instrument:Stock){
         super.init(router: router, instrument: instrument)
+        presenter = router.getPresenter()
+        transactions = presenter.fetchTransactions(instrument: instrument)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,8 +65,8 @@ class PortfolioInstrumentViewController: InstrumentViewController, UITableViewDe
         
     }
     
-    override func styleViews(stockQuote: GlobalQuote){
-        super.styleViews(stockQuote: stockQuote)
+    override func styleViews(){
+        super.styleViews()
         labelValue.textColor = theme.fontColor
 //        labelValue.text = String(instrument.value)+"$"
         labelValue.font = UIFont.preferredFont(forTextStyle: .title2)
@@ -81,6 +83,7 @@ class PortfolioInstrumentViewController: InstrumentViewController, UITableViewDe
         
         tableView.backgroundColor = theme.backgroundColorSecond
         tableView.reloadData()
+        calculateInstrumentData()
     }
     
     override func viewDidLoad() {
@@ -111,20 +114,36 @@ class PortfolioInstrumentViewController: InstrumentViewController, UITableViewDe
         
     }
     
+    func calculateInstrumentData(){
+        calculateTotalQuantity()
+        labelQuantity.text = "Total shares: \(totalQuantity!)"
+        labelValue.text = "Value:" + String(Float(stockQuote!.price)!*totalQuantity!)+"$"
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     @objc private func sellPressed(){
-        router.presentTransaction(instrument: instrument, transactionType: .sell)
-        tableView.reloadData()
+        router.presentTransaction(instrument: instrument, transactionType: .sell, price: Float(stockQuote!.price)!)
     }
     
     @objc private func buyPressed(){
-        router.presentTransaction(instrument: instrument, transactionType: .buy)
-        tableView.reloadData()
+        router.presentTransaction(instrument: instrument, transactionType: .buy, price: Float(stockQuote!.price)!)
     }
-
+    func reload() {
+        tableView.reloadData()
+        calculateInstrumentData()
+    }
+    func calculateTotalQuantity(){
+        totalQuantity=0
+        for t in transactions{
+            if (t.type == .buy){
+            totalQuantity!+=t.quantity
+            continue
+            }
+            totalQuantity!-=t.quantity
+        }
+    }
 }
 
 extension PortfolioInstrumentViewController:UITableViewDataSource{
@@ -133,7 +152,6 @@ extension PortfolioInstrumentViewController:UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter = router.getPresenter()
         transactions = presenter.fetchTransactions(instrument: instrument)
         return transactions.count
     }

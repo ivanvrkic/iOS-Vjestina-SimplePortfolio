@@ -10,7 +10,7 @@ import UIKit
 extension Transaction {
 
     init(with entity: CDTransaction) {
-        identifier = Int(entity.identifier)
+        identifier = entity.identifier
         quantity = entity.quantity
         instrument = Stock(with: entity.stock!)
         priceAtMoment = entity.priceAtMoment
@@ -18,7 +18,7 @@ extension Transaction {
     }
 
     func populate(_ entity: CDTransaction, in context: NSManagedObjectContext) {
-        entity.identifier = Int16(identifier)
+        entity.identifier = identifier
         entity.quantity = quantity
         entity.priceAtMoment = priceAtMoment
         entity.type = type

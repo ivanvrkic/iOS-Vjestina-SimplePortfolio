@@ -14,7 +14,7 @@ class InstrumentViewController: UIViewController{
     internal var instrument:Stock
     
     private var presenter:Presenter!
-    
+    internal var stockQuote: GlobalQuote?
     internal var leadingMargin:CGFloat!
     internal var titleMargin:CGFloat = 100
     internal var smallMargin:CGFloat = 20
@@ -109,6 +109,7 @@ class InstrumentViewController: UIViewController{
         self.instrument = instrument
         super.init(nibName: nil, bundle: nil)
         presenter = router.getPresenter()
+        fetchInfo()
     }
     
     required init?(coder: NSCoder) {
@@ -118,7 +119,7 @@ class InstrumentViewController: UIViewController{
 
     override func viewWillAppear(_ animated: Bool) {
         theme = getCurrentTheme()
-        fetchInfo()
+        
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
@@ -144,24 +145,24 @@ class InstrumentViewController: UIViewController{
         imageIcon.autoSetDimensions(to: CGSize(width: 80, height: 80))
     }
     
-    internal func styleViews(stockQuote: GlobalQuote){
+    internal func styleViews(){
         view.backgroundColor = theme.backgroundColor
-        labelSymbol.text=stockQuote.symbol
+        labelSymbol.text=stockQuote?.symbol
         labelSymbol.textColor = theme.fontColor
         labelPrice.textColor = theme.fontColor
-        labelPrice.text = String(stockQuote.price)+"$"
-        labelChange.text = String(stockQuote.change)+"$"
-        labelChangePercent.text = String(stockQuote.changePercent)
+        labelPrice.text = String(stockQuote!.price)+"$"
+        labelChange.text = String(stockQuote!.change)+"$"
+        labelChangePercent.text = String(stockQuote!.changePercent)
         labelName.textColor = theme.fontColor
         labelName.text = instrument.name
-        if (Double(stockQuote.change)! < 0){
+        if (Double(stockQuote!.change)! < 0){
             labelChange.textColor = theme.redColor
         } else {
             labelChange.textColor = theme.greenColor
         }
 //        labelMarketCap.text = "Market cap: "+String(instrument.marketCap)+"$"
 //        labelMarketCap.textColor = theme.fontColor
-        labelVolume.text = "Volume: "+String(stockQuote.volume)+"$"
+        labelVolume.text = "Volume: "+String(stockQuote!.volume)+"$"
         labelVolume.textColor = theme.fontColor
 //        labelDescription.text = instrument.description
 //        labelDescription.textColor = theme.fontColor
@@ -180,7 +181,8 @@ class InstrumentViewController: UIViewController{
     func fetchInfo() {
         presenter.fetchStockGlobalQuote(symbol: instrument.symbol!) { stockQuote in
             DispatchQueue.main.async {
-                self.styleViews(stockQuote: stockQuote)
+                self.stockQuote=stockQuote
+                self.styleViews()
             }
         }
     }

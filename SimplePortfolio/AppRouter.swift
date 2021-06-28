@@ -17,6 +17,7 @@ class AppRouter: AppRouterProtocol{
     
     private let navigationController: UINavigationController!
     private let presenter: Presenter
+    private var instrumentVc: PortfolioInstrumentViewController?
     
     init(navigationController: UINavigationController){
         self.navigationController = navigationController
@@ -50,21 +51,22 @@ class AppRouter: AppRouterProtocol{
     }
     
     func showPortfolioInstrument(instrument:Stock){
-        let instrumentVc = PortfolioInstrumentViewController(router: self, instrument: instrument)
-        navigationController.pushViewController(instrumentVc, animated: false)
+        instrumentVc = PortfolioInstrumentViewController(router: self, instrument: instrument)
+        navigationController.pushViewController(instrumentVc!, animated: false)
     }
     
     func getPresenter() -> Presenter{
         return presenter
     }
     
-    func presentTransaction(instrument:Stock,transactionType:TransactionType){
-        let transactionVc = TransactionViewController(router: self, instrument: instrument, transactionType: transactionType)
+    func presentTransaction(instrument:Stock,transactionType:TransactionType, price: Float){
+        let transactionVc = TransactionViewController(router: self, instrument: instrument, transactionType: transactionType, price: price)
         navigationController.present(transactionVc, animated: true, completion: nil)
     }
     
     func dismiss(){
         navigationController.dismiss(animated: true, completion: nil)
+        instrumentVc?.reload()
     }
     
 }

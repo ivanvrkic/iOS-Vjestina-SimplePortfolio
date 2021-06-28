@@ -4,7 +4,7 @@
 //
 //  Created by Ivan Vrkic on 27.06.2021..
 //
-
+import Foundation
 class DataRepository {
 
     private let coreDataSource: CoreDataSourceProtocol
@@ -32,7 +32,7 @@ class DataRepository {
         coreDataSource.fetchTransactionsFromCoreData(stock: stock)
     }
 
-    func deleteLocalData(withId id: Int) {
+    func deleteLocalData(withId id: UUID) {
         coreDataSource.deleteTransaction(withId: id)
     }
 }

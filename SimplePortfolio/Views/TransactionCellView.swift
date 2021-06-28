@@ -31,7 +31,7 @@ class TransactionCellView: UITableViewCell{
         stackHorizontal.addArrangedSubview(labelAction)
         stackHorizontal.addArrangedSubview(labelQuantity)
         stackHorizontal.addArrangedSubview(labelFor)
-        stackHorizontal.addArrangedSubview(labelQuantity)
+        stackHorizontal.addArrangedSubview(labelPrice)
         self.addSubview(stackHorizontal)
         
         stackHorizontal.autoAlignAxis(toSuperviewAxis: .horizontal)

@@ -31,41 +31,36 @@ struct CoreDataSource: CoreDataSourceProtocol {
         }
     }
 
-    func saveNewTransactions(_ transactions: [Transaction]) {
-        do {
-            let newIds = transactions.map { $0.identifier }
-            try deleteAllTransactionsExcept(withIds: newIds)
-        }
-        catch {
-            print("Error when deleting transactions from core data: \(error)")
-        }
-
-        transactions.forEach { transaction in
-            do {
-                let cdTransaction = try fetchTransaction(withId: transaction.identifier) ?? CDTransaction(context: coreDataContext)
-                transaction.populate(cdTransaction, in: coreDataContext)
-            } catch {
-                print("Error when fetching/creating a transaction: \(error)")
-            }
-
-            do {
-                try coreDataContext.save()
-            } catch {
-                print("Error when saving updated transaction: \(error)")
-            }
-        }
-    }
+//    func saveNewTransactions(_ transactions: [Transaction]) {
+//        do {
+//            let newIds = transactions.map { $0.identifier }
+//            try deleteAllTransactionsExcept(withIds: newIds)
+//        }
+//        catch {
+//            print("Error when deleting transactions from core data: \(error)")
+//        }
+//
+//        transactions.forEach { transaction in
+//            do {
+//                let cdTransaction = try fetchTransaction(withId: transaction.identifier) ?? CDTransaction(context: coreDataContext)
+//                transaction.populate(cdTransaction, in: coreDataContext)
+//            } catch {
+//                print("Error when fetching/creating a transaction: \(error)")
+//            }
+//
+//            do {
+//                try coreDataContext.save()
+//            } catch {
+//                print("Error when saving updated transaction: \(error)")
+//            }
+//        }
+//    }
     
     func saveNewTransaction(_ transaction: Transaction) {
-        do {
-            try deleteAllTransactionsExcept(withIds: [transaction.identifier])
-        }
-        catch {
-            print("Error when deleting transactions from core data: \(error)")
-        }
 
         do {
-            let cdTransaction = try fetchTransaction(withId: transaction.identifier) ?? CDTransaction(context: coreDataContext)
+//            let cdTransaction = try fetchTransaction(withId: transaction.identifier) ?? CDTransaction(context: coreDataContext)
+            let cdTransaction = CDTransaction(context: coreDataContext)
             transaction.populate(cdTransaction, in: coreDataContext)
         } catch {
             print("Error when fetching/creating a transaction: \(error)")
@@ -78,7 +73,7 @@ struct CoreDataSource: CoreDataSourceProtocol {
         }
     }
 
-    func deleteTransaction(withId id: Int) {
+    func deleteTransaction(withId id: UUID) {
         guard let transaction = try? fetchTransaction(withId: id) else { return }
 
         coreDataContext.delete(transaction)
@@ -91,9 +86,9 @@ struct CoreDataSource: CoreDataSourceProtocol {
 
     }
 
-    private func fetchTransaction(withId id: Int) throws -> CDTransaction? {
+    private func fetchTransaction(withId id: UUID) throws -> CDTransaction? {
         let request: NSFetchRequest<CDTransaction> = CDTransaction.fetchRequest()
-        request.predicate = NSPredicate(format: "%K == %u", #keyPath(CDTransaction.identifier), id)
+        request.predicate = NSPredicate(format: "%K == %u", #keyPath(CDTransaction.identifier), id as CVarArg)
 
         let cdResponse = try coreDataContext.fetch(request)
         return cdResponse.first

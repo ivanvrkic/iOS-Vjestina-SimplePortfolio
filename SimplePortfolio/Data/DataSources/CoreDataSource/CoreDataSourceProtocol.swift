@@ -9,7 +9,7 @@ import Foundation
 
 protocol CoreDataSourceProtocol {
     func fetchTransactionsFromCoreData(stock: Stock) -> [Transaction]
-    func saveNewTransactions(_ transactions: [Transaction])
+//    func saveNewTransactions(_ transactions: [Transaction])
     func saveNewTransaction(_ transaction: Transaction)
-    func deleteTransaction(withId id: Int)
+    func deleteTransaction(withId id: UUID)
 }

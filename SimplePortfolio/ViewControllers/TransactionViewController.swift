@@ -16,6 +16,7 @@ class TransactionViewController:UIViewController {
     private var router:AppRouter!
     private var theme:ThemeProtocol!
     private var presenter:Presenter!
+    private var price:Float!
     
     private var widthOfComponents:CGFloat!
     private var leadingMargin:CGFloat!
@@ -53,10 +54,11 @@ class TransactionViewController:UIViewController {
         return view
     }()
     
-    init(router:AppRouter,instrument:Stock, transactionType:TransactionType){
+    init(router:AppRouter,instrument:Stock, transactionType:TransactionType, price: Float){
         self.router = router
         self.instrument = instrument
         self.transactionType = transactionType
+        self.price = price
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -74,7 +76,6 @@ class TransactionViewController:UIViewController {
     override func viewDidLoad() {
         stack.addArrangedSubview(labelTitle)
         stack.addArrangedSubview(textQuantity)
-        stack.addArrangedSubview(textPrice)
         stack.addArrangedSubview(button)
         view.addSubview(stack)
         
@@ -94,6 +95,7 @@ class TransactionViewController:UIViewController {
             button.setTitle("Buy", for: .normal)
             button.backgroundColor = theme.greenColor
             labelTitle.text = "Buy "+instrument.name!
+        } else if (transactionType == .sell) {
             button.setTitle("Sell", for: .normal)
             button.backgroundColor = theme.redColor
             labelTitle.text = "Sell "+instrument.name!
@@ -108,8 +110,7 @@ class TransactionViewController:UIViewController {
     
     @objc private func buttonPressed(){
         let quantity = Float(textQuantity.text!)
-        let price = Float(textPrice.text!)
-        let transaction = Transaction(identifier: 3, quantity: quantity!, instrument: instrument, priceAtMoment: price!, type: transactionType)
+        let transaction = Transaction(identifier: UUID(), quantity: quantity!, instrument: instrument, priceAtMoment: price, type: transactionType)
         presenter.makeTransaction(transaction: transaction)
         router.dismiss()
     }

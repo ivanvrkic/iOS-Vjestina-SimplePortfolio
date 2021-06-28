@@ -14,12 +14,12 @@ class DataService{
         return [i1,i2]
     }
     
-    func fetchTransactions() -> [Transaction]{
-        let i1 = Stock(symbol: "AAPL", name: "Apple")
-        let c1 = Transaction(identifier: 1, quantity: 3, instrument: i1, priceAtMoment: 200, type: .buy)
-        let c2 = Transaction(identifier: 2, quantity: 2, instrument: i1, priceAtMoment: 300, type: .sell)
-        return [c1,c2]
-    }
+//    func fetchTransactions() -> [Transaction]{
+//        let i1 = Stock(symbol: "AAPL", name: "Apple")
+//        let c1 = Transaction(identifier: 1, quantity: 3, instrument: i1, priceAtMoment: 200, type: .buy)
+//        let c2 = Transaction(identifier: 2, quantity: 2, instrument: i1, priceAtMoment: 300, type: .sell)
+//        return [c1,c2]
+//    }
     
     func fetchStocks(keyword: String, completionHandler: @escaping ([Stock]) -> Void){
         let urlString = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=\(keyword)&apikey=9BD1Q7Q5BUQKQ7S7"

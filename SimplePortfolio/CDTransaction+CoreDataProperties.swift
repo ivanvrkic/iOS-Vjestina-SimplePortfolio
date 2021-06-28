@@ -20,5 +20,5 @@ extension CDTransaction {
     @NSManaged public var priceAtMoment: Float
     @NSManaged public var type: TransactionType
     @NSManaged public var stock: CDStock?
-    @NSManaged public var identifier: Int16
+    @NSManaged public var identifier: UUID
 }

@@ -84,7 +84,7 @@ class Presenter:DiscoveryPresenter,PortfolioPresenter{
 //
 //    }
 
-    func deleteTransaction(withId id: Int) {
+    func deleteTransaction(withId id: UUID) {
         dataRepository.deleteLocalData(withId: id)
     }
 
